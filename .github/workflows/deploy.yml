@@ -1,0 +1,58 @@
+name: Deploy site
+
+on:
+  # Any change to the site goes live automatically.
+  push:
+    branches: [main]
+    paths-ignore: ["README.md"]
+  # Refresh the baked-in repo data (new repos, stars, topics) every 6 hours.
+  schedule:
+    - cron: "23 */6 * * *"
+  # "Run workflow" button in the Actions tab, or: gh workflow run deploy.yml
+  workflow_dispatch:
+  # Trigger from elsewhere, e.g. another repo's release workflow:
+  #   gh api repos/imkamaran/imkamaran.github.io/dispatches -f event_type=refresh
+  repository_dispatch:
+    types: [refresh]
+
+permissions:
+  contents: read
+  pages: write
+  id-token: write
+
+# One deployment at a time; let an in-progress deploy finish.
+concurrency:
+  group: pages
+  cancel-in-progress: false
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v7
+
+      - uses: actions/setup-node@v7
+        with:
+          node-version: 24
+
+      - name: Build site
+        run: node scripts/build.mjs
+        env:
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+
+      - uses: actions/configure-pages@v6
+
+      - uses: actions/upload-pages-artifact@v5
+        with:
+          path: _site
+
+  deploy:
+    needs: build
+    runs-on: ubuntu-latest
+    environment:
+      name: github-pages
+      url: ${{ steps.deployment.outputs.page_url }}
+    steps:
+      - name: Deploy to GitHub Pages
+        id: deployment
+        uses: actions/deploy-pages@v5

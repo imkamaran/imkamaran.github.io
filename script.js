@@ -8,7 +8,8 @@
 
   // Build-time snapshot: the page renders instantly from this, then refreshes
   // from the GitHub API. It's also the fallback if the API is rate-limited.
-  const SNAPSHOT = {
+  // The deploy workflow (scripts/build.mjs) rewrites everything between the markers.
+  const SNAPSHOT = /* @snapshot:start */ {
     fetchedAt: "2026-10-28T08:20:00Z",
     user: {
       login: "imkamaran",
@@ -24,7 +25,7 @@
       { name: "avd-kernelsu-x86_64", description: "AVD GKI Kernel Compiler for KernelSU (x86_64)", html_url: "https://github.com/imkamaran/avd-kernelsu-x86_64", language: null, stargazers_count: 0, forks_count: 1, fork: true, archived: false, topics: [], pushed_at: "2026-09-07T13:32:24Z", parent: "leemikepop/avd-kernelsu-x86_64" },
       { name: "avd-kernelsu", description: "Build AVD kernels with KernelSU-Next + SUSFS patches (Android 14/15/16, x86_64 & aarch64)", html_url: "https://github.com/imkamaran/avd-kernelsu", language: null, stargazers_count: 0, forks_count: 0, fork: true, archived: false, topics: [], pushed_at: "2026-03-23T23:56:28Z", parent: "nzaar9/avd-kernelsu" },
     ],
-  };
+  } /* @snapshot:end */;
 
   // Colors from github-linguist.
   const LANG_COLORS = {
