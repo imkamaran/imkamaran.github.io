@@ -1,0 +1,135 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Kamaran · imkamaran</title>
+  <meta name="description" content="Open-source tools for rooted Android by imkamaran: Xposed &amp; LSPosed modules, ADB utilities and KernelSU kernel builds.">
+  <meta name="theme-color" content="#f6f7f5" media="(prefers-color-scheme: light)">
+  <meta name="theme-color" content="#0a0c0b" media="(prefers-color-scheme: dark)">
+
+  <meta property="og:type" content="website">
+  <meta property="og:title" content="Kamaran · imkamaran">
+  <meta property="og:description" content="Open-source tools for rooted Android: Xposed &amp; LSPosed modules, ADB utilities and KernelSU kernel builds.">
+  <meta property="og:url" content="https://imkamaran.github.io/">
+  <meta property="og:image" content="https://avatars.githubusercontent.com/u/292006170?v=4&amp;s=400">
+  <meta name="twitter:card" content="summary">
+
+  <link rel="icon" href="favicon.svg" type="image/svg+xml">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link rel="preconnect" href="https://api.github.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Geist:wght@400;500;600;700&family=Geist+Mono:wght@400;500&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="style.css">
+
+  <script>
+    // Apply a saved theme before first paint to avoid a flash.
+    try { var t = localStorage.getItem("theme"); if (t) document.documentElement.dataset.theme = t; } catch (e) {}
+  </script>
+  <script src="script.js" defer></script>
+</head>
+<body>
+  <div class="backdrop" aria-hidden="true"></div>
+
+  <header class="nav" id="nav">
+    <div class="wrap nav-inner">
+      <a class="brand" href="#top" aria-label="imkamaran, back to top">
+        <span class="brand-dim">~/</span>imkamaran<span class="caret" aria-hidden="true"></span>
+      </a>
+      <nav class="nav-links" aria-label="Primary">
+        <a href="#projects">Projects</a>
+        <a href="#forks">Forks</a>
+        <a class="icon-link" href="https://github.com/imkamaran" aria-label="imkamaran on GitHub">
+          <svg viewBox="0 0 16 16" width="18" height="18" aria-hidden="true"><path fill="currentColor" d="M8 0c4.42 0 8 3.58 8 8a8.013 8.013 0 0 1-5.45 7.59c-.4.08-.55-.17-.55-.38 0-.27.01-1.13.01-2.2 0-.75-.25-1.23-.54-1.48 1.78-.2 3.65-.88 3.65-3.95 0-.88-.31-1.59-.82-2.15.08-.2.36-1.02-.08-2.12 0 0-.67-.22-2.2.82-.64-.18-1.32-.27-2-.27-.68 0-1.36.09-2 .27-1.53-1.03-2.2-.82-2.2-.82-.44 1.1-.16 1.92-.08 2.12-.51.56-.82 1.28-.82 2.15 0 3.06 1.86 3.75 3.64 3.95-.23.2-.44.55-.51 1.07-.46.21-1.61.55-2.33-.66-.15-.24-.6-.83-1.23-.82-.67.01-.27.38.01.53.34.19.73.9.82 1.13.16.45.68 1.31 2.69.94 0 .67.01 1.3.01 1.49 0 .21-.15.45-.55.38A7.995 7.995 0 0 1 0 8c0-4.42 3.58-8 8-8Z"/></svg>
+        </a>
+        <button class="icon-link theme-toggle" id="theme-toggle" type="button" aria-label="Toggle color theme"></button>
+      </nav>
+    </div>
+  </header>
+
+  <main id="top">
+    <section class="hero wrap">
+      <div class="hero-copy reveal">
+        <div class="hero-id">
+          <img class="avatar" id="avatar" src="https://avatars.githubusercontent.com/u/292006170?v=4&amp;s=160" alt="" width="52" height="52">
+          <div>
+            <p class="handle">@imkamaran</p>
+            <p class="tags">Android · Root · Xposed · Kernels</p>
+          </div>
+        </div>
+
+        <h1>I'm Kamaran.<br><span class="h1-dim">I build tools for rooted&nbsp;Android.</span></h1>
+
+        <p class="lede">
+          Open-source Xposed &amp; LSPosed modules, device-control utilities and KernelSU kernel builds,
+          focused on privacy and on putting you in control of your own hardware.
+        </p>
+
+        <div class="cta">
+          <a class="btn btn-primary" href="#projects">
+            Explore projects
+            <svg viewBox="0 0 16 16" width="16" height="16" aria-hidden="true"><path d="M8 3v10M3.5 8.5 8 13l4.5-4.5" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"/></svg>
+          </a>
+          <a class="btn btn-ghost" href="https://github.com/imkamaran">
+            <svg viewBox="0 0 16 16" width="16" height="16" aria-hidden="true"><path fill="currentColor" d="M8 0c4.42 0 8 3.58 8 8a8.013 8.013 0 0 1-5.45 7.59c-.4.08-.55-.17-.55-.38 0-.27.01-1.13.01-2.2 0-.75-.25-1.23-.54-1.48 1.78-.2 3.65-.88 3.65-3.95 0-.88-.31-1.59-.82-2.15.08-.2.36-1.02-.08-2.12 0 0-.67-.22-2.2.82-.64-.18-1.32-.27-2-.27-.68 0-1.36.09-2 .27-1.53-1.03-2.2-.82-2.2-.82-.44 1.1-.16 1.92-.08 2.12-.51.56-.82 1.28-.82 2.15 0 3.06 1.86 3.75 3.64 3.95-.23.2-.44.55-.51 1.07-.46.21-1.61.55-2.33-.66-.15-.24-.6-.83-1.23-.82-.67.01-.27.38.01.53.34.19.73.9.82 1.13.16.45.68 1.31 2.69.94 0 .67.01 1.3.01 1.49 0 .21-.15.45-.55.38A7.995 7.995 0 0 1 0 8c0-4.42 3.58-8 8-8Z"/></svg>
+            Follow on GitHub
+          </a>
+        </div>
+      </div>
+
+      <figure class="terminal reveal" style="--i: 2" aria-label="Profile summary">
+        <div class="term-bar" aria-hidden="true">
+          <span></span><span></span><span></span>
+          <p>imkamaran@github: ~</p>
+        </div>
+        <div class="term-body" id="terminal"></div>
+      </figure>
+    </section>
+
+    <section class="section wrap" id="projects" aria-labelledby="projects-title">
+      <div class="section-head">
+        <div>
+          <p class="eyebrow">01 — Projects</p>
+          <h2 id="projects-title">Original work<span class="count" id="project-count"></span></h2>
+        </div>
+        <div class="toolbar">
+          <label class="search">
+            <svg viewBox="0 0 16 16" width="15" height="15" aria-hidden="true"><circle cx="7" cy="7" r="4.75" fill="none" stroke="currentColor" stroke-width="1.5"/><path d="m10.5 10.5 3.25 3.25" stroke="currentColor" stroke-width="1.5" stroke-linecap="round"/></svg>
+            <span class="sr-only">Filter repositories</span>
+            <input id="query" type="search" placeholder="Search repos" autocomplete="off" spellcheck="false">
+            <kbd aria-hidden="true">/</kbd>
+          </label>
+          <label class="select">
+            <span class="sr-only">Sort repositories</span>
+            <select id="sort">
+              <option value="stars">Most stars</option>
+              <option value="pushed">Recently updated</option>
+              <option value="name">Name</option>
+            </select>
+            <svg viewBox="0 0 16 16" width="14" height="14" aria-hidden="true"><path d="m4 6 4 4 4-4" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/></svg>
+          </label>
+        </div>
+      </div>
+
+      <div class="grid" id="project-grid"></div>
+      <p class="empty" id="empty" hidden></p>
+      <noscript><p class="empty">Enable JavaScript to see the repository list, or browse it on <a href="https://github.com/imkamaran?tab=repositories">GitHub</a>.</p></noscript>
+    </section>
+
+    <section class="section wrap" id="forks" aria-labelledby="forks-title">
+      <div class="section-head">
+        <div>
+          <p class="eyebrow">02 — Forks</p>
+          <h2 id="forks-title">Forked from upstream<span class="count" id="fork-count"></span></h2>
+        </div>
+      </div>
+      <ul class="fork-list" id="fork-list"></ul>
+    </section>
+  </main>
+
+  <footer class="footer wrap">
+    <p>© <span id="year">2026</span> imkamaran · Hosted on GitHub Pages</p>
+    <p class="sync" id="sync"><span class="sync-dot"></span><span id="sync-text">Loading from GitHub…</span></p>
+  </footer>
+</body>
+</html>
