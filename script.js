@@ -218,13 +218,14 @@
     const lines = [
       cmd("whoami"),
       esc(user.login),
-      cmd("ls ~/projects"),
+      cmd("groups"),
+      `<span class="term-accent">pentest  research  android</span>`,
+      cmd("ls ~/tools"),
       esc(own.map((r) => r.name).join("  ")) || "(empty)",
       cmd("cat ~/stats"),
       kv("repos", `${all.length} public · ${own.length} original`),
       kv("stars", `<span class="term-star">★</span> ${stars}`),
       kv("languages", esc(langs.join(", ") || "n/a")),
-      kv("followers", esc(user.followers)),
       kv("since", esc(since)),
       `<span class="term-prompt">$</span> <span class="term-cursor"></span>`,
     ];
