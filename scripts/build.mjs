@@ -8,7 +8,7 @@
 //   node scripts/build.mjs --offline  # keep the committed snapshot
 
 import { createHash } from "node:crypto";
-import { appendFile, copyFile, mkdir, readFile, rm, writeFile } from "node:fs/promises";
+import { appendFile, cp, copyFile, mkdir, readFile, rm, writeFile } from "node:fs/promises";
 import path from "node:path";
 import { fileURLToPath } from "node:url";
 
@@ -16,6 +16,8 @@ const ROOT = path.resolve(path.dirname(fileURLToPath(import.meta.url)), "..");
 const OUT = path.join(ROOT, "_site");
 const USER = process.env.SITE_USER || "imkamaran";
 const STATIC_FILES = ["favicon.svg"];
+// Directories copied wholesale, e.g. project screenshots.
+const STATIC_DIRS = ["assets"];
 const START = "/* @snapshot:start */";
 const END = "/* @snapshot:end */";
 
@@ -126,6 +128,7 @@ async function main() {
   await writeFile(path.join(OUT, "style.css"), css);
   await writeFile(path.join(OUT, "script.js"), js);
   for (const file of STATIC_FILES) await copyFile(path.join(ROOT, file), path.join(OUT, file));
+  for (const dir of STATIC_DIRS) await cp(path.join(ROOT, dir), path.join(OUT, dir), { recursive: true, force: true });
 
   const summary = snapshot ? summarize(snapshot) : "Built with the committed snapshot (GitHub API not used).";
   console.log(`Built ${path.relative(ROOT, OUT)}/ · ${summary}`);
