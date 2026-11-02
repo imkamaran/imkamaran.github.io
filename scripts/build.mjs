@@ -8,6 +8,7 @@
 //   node scripts/build.mjs --offline  # keep the committed snapshot
 
 import { createHash } from "node:crypto";
+import { existsSync } from "node:fs";
 import { appendFile, cp, copyFile, mkdir, readFile, rm, writeFile } from "node:fs/promises";
 import path from "node:path";
 import { fileURLToPath } from "node:url";
@@ -128,7 +129,11 @@ async function main() {
   await writeFile(path.join(OUT, "style.css"), css);
   await writeFile(path.join(OUT, "script.js"), js);
   for (const file of STATIC_FILES) await copyFile(path.join(ROOT, file), path.join(OUT, file));
-  for (const dir of STATIC_DIRS) await cp(path.join(ROOT, dir), path.join(OUT, dir), { recursive: true, force: true });
+  for (const dir of STATIC_DIRS) {
+    // Optional: a listed directory that is not there yet is not an error.
+    if (!existsSync(path.join(ROOT, dir))) continue;
+    await cp(path.join(ROOT, dir), path.join(OUT, dir), { recursive: true, force: true });
+  }
 
   const summary = snapshot ? summarize(snapshot) : "Built with the committed snapshot (GitHub API not used).";
   console.log(`Built ${path.relative(ROOT, OUT)}/ · ${summary}`);
